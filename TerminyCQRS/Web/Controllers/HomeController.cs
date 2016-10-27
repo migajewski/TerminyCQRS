@@ -15,7 +15,10 @@ namespace Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            commandBus.SendCommand(new CreateTermin());
             return View();
         }
+
+        
     }
 }

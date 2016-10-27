@@ -1,4 +1,5 @@
 ﻿using CQRS.Commands;
+using CQRS.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,9 +54,16 @@ namespace CQRS.Commands
     public class CreateTerminHandler : IHandleCommand<CreateTermin>
 
     {
+        IEventBus eventBus;
+
+        public CreateTerminHandler(IEventBus eventBus)
+        {
+            this.eventBus = eventBus;
+        }
+
         public void Handle(CreateTermin command)
         {
-            throw new NotImplementedException();
+            eventBus.PublishEvent(new TerminCreated());
         }
     }
 }
