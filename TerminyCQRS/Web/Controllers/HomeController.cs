@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using CQRS.Commands;
 using System.Web.Mvc;
 
 namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
-        {
+        private ICommandBus commandBus;
 
+        public HomeController(ICommandBus commandBus)
+        {
+            this.commandBus = commandBus;
         }
 
         // GET: Home
